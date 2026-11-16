@@ -120,8 +120,7 @@ def csv_explorer(folder, filenames, key):
 
 st.sidebar.title('Quant Research Dashboard')
 page = st.sidebar.radio('Navigation', PAGES)
-st.sidebar.caption('Hosted reduced-data extract · read-only')
-st.sidebar.warning('ONLINE DATA EXTRACT: price/factor panels show up to 250 stocks and the latest 500 trading days; not full-universe results. W3/W4 report CSVs are original where available.')
+st.sidebar.caption('Local data only · read-only')
 st.title(page)
 st.caption('Shanghai & Shenzhen A-shares | local 2018–2024 data where available | D1.7 phase 3')
 
@@ -265,16 +264,69 @@ elif page == 'Holdings & Trades':
     csv_explorer(folder, names, 'holdings')
     st.caption('Displayed trade records are research outputs, not brokerage-confirmed fills.')
 else:
-    st.markdown('''
-**Universe:** Shanghai and Shenzhen A-share data available locally. Panel membership does not imply daily tradability.
+    st.caption('Research governance | Methodology, assumptions, validation status and reproducibility')
+    st.info('This page documents the research framework and known limitations. It does not certify that every listed control has been implemented or independently audited.')
 
-**Period:** Available local data, generally 2018–2024. A selected date range may contain incomplete listings.
+    st.subheader('1. Research scope & data lineage')
+    a, b, c = st.columns(3)
+    a.metric('Market', 'China A-shares')
+    b.metric('Historical coverage', '2018–2024*')
+    c.metric('Online dataset', 'Reduced extract')
+    st.caption('*Date availability varies by panel. The online deployment may contain only up to 250 stocks and the latest 500 trading days; it is not the complete historical research universe.')
+    st.markdown('''**Universe definition:** Shanghai and Shenzhen A-share panels available in the local research environment. A stock appearing in a panel does not establish its eligibility or tradability on a given date.
 
-**Data:** Local Parquet panels, indexed by trading date and stock code. The dashboard does not alter these files.
+**Source format:** Local Parquet matrices indexed by trading date and stock identifier; backtest and analysis outputs are stored as CSV reports. The online app reads these files without altering them.
 
-**Factor coverage:** Fraction of finite numeric cells, not a quality-adjusted measure of predictive value.
+**Data lineage caution:** Adjustment conventions, corporate actions, publication timestamps, vendor definitions, and point-in-time membership require source-level verification.''')
 
-**Liquidity:** Positive reported trading amount and rolling amount are exploratory screens only; units must be verified against the upstream source. ST filtering is applied when the corresponding panel is available.
+    st.subheader('2. Research workflow')
+    st.markdown('''**Data checks → Factor research → Portfolio construction → Historical backtest → Risk and cost analysis → Interpretation**
 
-**Limitations:** Missing observations, suspended stocks, ST status, delistings, transaction costs, look-ahead bias, corporate actions and sample-selection bias require validation. Backtest performance has not been independently audited.
-''')
+- **Data checks:** Inspect missing observations, panel coverage, date alignment and stock identifiers.
+- **Factor research:** Examine factor distributions and availability. Coverage is not evidence of predictive power.
+- **Portfolio construction:** Interpret weighting and rebalancing assumptions from the corresponding source code and strategy reports.
+- **Backtesting:** Compare NAV, performance and yearly outputs where source reports exist; do not treat simulated fills as actual trades.
+- **Evaluation:** Review drawdowns, turnover, costs, capacity proxies and attribution residuals where available.''')
+
+    st.subheader('3. Known limitations and possible effects')
+    limitations = pd.DataFrame([
+        ('Look-ahead / point-in-time bias', 'Fundamental data may be aligned to reporting periods rather than public availability dates.', 'Could overstate historical predictive performance.', 'Verify announcement dates, lags and rolling-window boundaries.'),
+        ('Survivorship / universe selection', 'Historical universe membership and delisted securities may be incomplete.', 'Can distort returns and risk estimates.', 'Reconstruct historical eligible universes and delisting treatment.'),
+        ('Suspensions, ST and price limits', 'Panel presence does not imply executable buy or sell orders.', 'Simulated trades may be infeasible.', 'Validate daily tradability, ST, suspensions and limit-up/down rules.'),
+        ('Transaction costs and slippage', 'Assumed fees and execution prices may differ from actual conditions.', 'Net performance can be overstated.', 'Stress-test cost scenarios and turnover; model realistic execution.'),
+        ('Liquidity and capacity', 'Reported trading amount is a screening proxy, not executable capacity.', 'Large orders may face impact and fill constraints.', 'Verify units, participation limits and market impact.'),
+        ('Corporate actions and adjustments', 'Price adjustment methodology may vary by source.', 'Can distort returns and signal construction.', 'Audit split/dividend handling and adjustment conventions.'),
+        ('Multiple testing / overfitting', 'Factor and parameter selection may reuse the same historical sample.', 'Selected strategies can appear stronger than they generalize.', 'Use independent out-of-sample and walk-forward evaluations.'),
+        ('Market regimes and tail events', 'Historical sample covers a finite set of market conditions.', 'Drawdown and tail risk may be underestimated.', 'Assess stress windows, annual stability and downside measures.'),
+        ('Reduced online data extract', 'Web display may use a 250-stock / 500-day subset.', 'Coverage and distribution statistics differ from the full universe.', 'Clearly separate demo-panel metrics from original full-sample reports.'),
+    ], columns=['Risk area','Current limitation','Potential impact','Recommended validation'])
+    st.dataframe(limitations, use_container_width=True, hide_index=True)
+
+    st.subheader('4. Interpretation of key research metrics')
+    with st.expander('Factor coverage and data completeness', expanded=True):
+        st.markdown('Coverage is the fraction of finite numeric cells in the selected matrix. It measures data availability, **not** factor information coefficient, significance, alpha or executable breadth.')
+    with st.expander('NAV, annual return, Sharpe and maximum drawdown'):
+        st.markdown('These are descriptive statistics of a historical simulated equity curve. Their meaning depends on return frequency, benchmark, annualization convention, costs and sample window. They do not imply guaranteed future returns.')
+    with st.expander('Liquidity screen and capacity'):
+        st.markdown('Positive trading amount and rolling-average amount support exploratory filtering only. Units and order-size assumptions must be verified before estimating implementable capacity.')
+    with st.expander('Attribution and reconciliation'):
+        st.markdown('Factor/industry attribution depends on chosen exposures, grouping conventions and return definitions. Check residuals and accounting consistency against the original reports.')
+
+    st.subheader('5. Validation checklist')
+    checks = pd.DataFrame([
+        ('Source files are read-only in the dashboard', 'Implemented in dashboard design'),
+        ('Missing-file messages are surfaced', 'Implemented in dashboard design'),
+        ('Factor data coverage is explicitly distinguished from predictive validity', 'Documented'),
+        ('Historical panel membership checked against daily tradability', 'Not independently verified'),
+        ('Point-in-time financial disclosures and look-ahead checks', 'Not independently verified'),
+        ('Full survivorship-free historical universe', 'Not independently verified'),
+        ('Execution feasibility and live brokerage fills', 'Not independently verified'),
+        ('Independent out-of-sample performance validation', 'Not established by this dashboard'),
+        ('Full-sample equivalence of reduced online extract', 'Not applicable: reduced extract'),
+    ], columns=['Control / question', 'Current status'])
+    st.dataframe(checks, use_container_width=True, hide_index=True)
+
+    st.subheader('6. Reproducibility & disclosure')
+    st.markdown('''To reproduce a displayed result, record the **data version**, **strategy source-code version**, **date range**, **factor list**, **universe definition**, **rebalancing settings**, **cost assumptions**, and **output CSV filename**. Where a source report is unavailable, the dashboard should show a missing-data notice rather than substitute synthetic performance.
+
+**Disclosure:** This application is an educational research demonstration. It is not investment advice. Backtested returns are hypothetical, have not been independently audited, and may not be attainable in live trading.''')
