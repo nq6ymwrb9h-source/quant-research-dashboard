@@ -1,0 +1,623 @@
+{
+  "panel_limits": {
+    "stocks": 250,
+    "trading_days": 500
+  },
+  "copied": [
+    {
+      "file": "data/clean/close_hfq.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/clean/amount.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/clean/is_st.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/AMOUNT_20.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/AMOUNT_5.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/AMOUNT_60.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/AMP_20.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/BIAS_10.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/BIAS_120.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/BIAS_20.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/BIAS_5.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/BIAS_60.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/BOLLZ_10.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/BOLLZ_60.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/BOLL_DEV.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/BP.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/BVPS_LEVEL.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/BVPS_TO_EPS.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/CFP.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/DEBT.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/DOWNVOL_20.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/DOWNVOL_60.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/EARNINGS_YIELD_ABS.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/EP.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/EP_MINUS_CFP.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/GROWTH_SPREAD.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/ILLIQ_20.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/ILLIQ_5.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/ILLIQ_60.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/LEVERAGE_INV.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/LNMV.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/LOSS_FLAG.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/MACD_DEV.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/MOM_10.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/MOM_120.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/MOM_180.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/MOM_20.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/MOM_240.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/MOM_40.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/MOM_60.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/MOM_90.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/NPG.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/OCF_TO_BVPS.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/OCF_TO_EPS.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/PVCORR_20.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/PV_CORR_60.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/RANGE_10.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/RANGE_60.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/RETSKEW_20.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/RETSKEW_60.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/REVG.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/REV_5.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/ROE.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/ROE_DIR.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/RSI_10.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/RSI_14.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/RSI_30.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/RSI_5.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/TURNSTD_20.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/TURNSTD_60.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/TURN_120.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/TURN_20.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/TURN_5.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/TURN_60.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/VOLRATIO_20.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/VOLRATIO_60.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/VOL_10.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/VOL_120.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/VOL_20.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/VOL_40.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "data/factors/VOL_60.parquet",
+      "shape": [
+        500,
+        250
+      ]
+    },
+    {
+      "file": "reports/week3/nav_all.csv",
+      "bytes": 114683
+    },
+    {
+      "file": "reports/week3/bt_summary.csv",
+      "bytes": 977
+    },
+    {
+      "file": "reports/week3/perf_all.csv",
+      "bytes": 6752
+    },
+    {
+      "file": "reports/week3/yearly_EW_FINAL2.csv",
+      "bytes": 478
+    },
+    {
+      "file": "reports/week3/holdings_EW_FINAL2.csv",
+      "bytes": 245858
+    },
+    {
+      "file": "reports/week3/holdings_EW.csv",
+      "bytes": 244097
+    },
+    {
+      "file": "reports/week3/holdings_IC.csv",
+      "bytes": 245043
+    },
+    {
+      "file": "reports/week3/holdings_IR.csv",
+      "bytes": 244638
+    },
+    {
+      "file": "reports/week3/holdings_LASSO.csv",
+      "bytes": 245229
+    },
+    {
+      "file": "reports/week3/holdings_XGB.csv",
+      "bytes": 244459
+    },
+    {
+      "file": "reports/week3/trades_IC.csv",
+      "bytes": 390076
+    },
+    {
+      "file": "reports/week3/rebalance_EW_FINAL2.csv",
+      "bytes": 5246
+    },
+    {
+      "file": "reports/week4/nav_all.csv",
+      "bytes": 214949
+    },
+    {
+      "file": "reports/week4/bt_compare_FINAL.csv",
+      "bytes": 85580
+    },
+    {
+      "file": "reports/week4/bt_summary.csv",
+      "bytes": 724
+    },
+    {
+      "file": "reports/week4/drawdown_episodes_FINAL.csv",
+      "bytes": 407
+    },
+    {
+      "file": "reports/week4/tail_stats_FINAL.csv",
+      "bytes": 827
+    },
+    {
+      "file": "reports/week4/cost_sensitivity.csv",
+      "bytes": 600
+    },
+    {
+      "file": "reports/week4/variants_eval.csv",
+      "bytes": 3462
+    },
+    {
+      "file": "reports/week4/factor_attr_FINAL.csv",
+      "bytes": 1648
+    },
+    {
+      "file": "reports/week4/factor_contrib_period_FINAL.csv",
+      "bytes": 14350
+    },
+    {
+      "file": "reports/week4/brinson_industry_FINAL.csv",
+      "bytes": 9351
+    },
+    {
+      "file": "reports/week4/brinson_period_FINAL.csv",
+      "bytes": 16665
+    },
+    {
+      "file": "reports/week4/brinson_summary_FINAL.csv",
+      "bytes": 788
+    },
+    {
+      "file": "reports/week4/holdings_FINAL.csv",
+      "bytes": 237524
+    },
+    {
+      "file": "reports/week4/trades_FINAL.csv",
+      "bytes": 391666
+    },
+    {
+      "file": "reports/week4/te_shares_FINAL.csv",
+      "bytes": 575
+    },
+    {
+      "file": "reports/week4/selection_record.csv",
+      "bytes": 554
+    }
+  ],
+  "skipped": [
+    "reports/week3/bt_compare_FINAL.csv (missing)",
+    "reports/week3/holdings_BASE.csv (over 15 MB)",
+    "reports/week4/perf_all.csv (missing)",
+    "reports/week4/yearly_EW_FINAL2.csv (missing)"
+  ]
+}
